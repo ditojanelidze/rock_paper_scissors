@@ -1,9 +1,7 @@
 class GamesController < ApplicationController
 
   def choices
-    service = ChoicesService.new
-    service.call
-    render_response service
+    render json: {choices: Choice.all}
   end
 
   def play
