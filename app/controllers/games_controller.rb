@@ -1,7 +1,7 @@
 class GamesController < ApplicationController
 
   def choices
-    render json: {choices: Choice.all}
+    render json: { choices: Choice.all }
   end
 
   def play
