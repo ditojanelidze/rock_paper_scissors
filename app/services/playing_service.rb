@@ -1,6 +1,6 @@
 class PlayingService
 
-  attr_reader :params, :result
+  attr_reader :params, :game_result, :errors
 
   def initialize(params)
     @params = params
@@ -8,12 +8,12 @@ class PlayingService
   end
 
   def json_view
-    { curb_result:, result: }
+    { computer_choice: computer_choice.id_name, game_result: }
   end
 
   def play
-    @result = GameRule.where(player_choice_id: player_choice.id,
-                             computer_choice_id: computer_choice.id).result
+    @game_result = GameRule.find_by(player_choice_id: player_choice.id,
+                                    computer_choice_id: computer_choice.id).result
   end
 
   def player_choice
@@ -21,7 +21,7 @@ class PlayingService
   end
 
   def computer_choice
-    @computer_choice ||= Choice.find_by(id_name: curb_result[:choice])
+    @computer_choice ||= Choice.find_by(id_name: curb_result)
   end
 
   def curb_result

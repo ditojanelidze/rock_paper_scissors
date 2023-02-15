@@ -1,8 +1,7 @@
 module External
   class CurbService
     def self.call
-
-      {choice: ['rock', 'paper', 'scissor'].sample}
+      ['rock', 'paper', 'scissor'].sample
     end
 
     def url

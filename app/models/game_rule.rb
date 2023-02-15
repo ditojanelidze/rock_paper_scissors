@@ -4,6 +4,7 @@ class GameRule < ApplicationRecord
 
   enum result: {
     lose: 0,
-    win: 1
+    win: 1,
+    tie: 2
   }
 end
