@@ -1,5 +1,6 @@
-class GamesController < ApplicationController
+# frozen_string_literal: true
 
+class GamesController < ApplicationController
   def choices
     render json: { choices: Choice.all }
   end

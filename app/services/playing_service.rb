@@ -1,5 +1,6 @@
-class PlayingService
+# frozen_string_literal: true
 
+class PlayingService
   attr_reader :params, :game_result, :errors
 
   def initialize(params)

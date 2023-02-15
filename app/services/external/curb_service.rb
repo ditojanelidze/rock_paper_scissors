@@ -1,12 +1,14 @@
+# frozen_string_literal: true
+
 module External
   class CurbService
     class << self
       def call
         begin
           response = RestClient::Request.execute(method: :get, url:, headers:, timeout: GAME_TIMEOUT)
-          result = {success: true, choice: JSON.parse(response.body)['body']}
-        rescue => e
-          result = {success: false, message: e.message}
+          result = { success: true, choice: JSON.parse(response.body)['body'] }
+        rescue StandardError => e
+          result = { success: false, message: e.message }
         end
         result
       end
