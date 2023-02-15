@@ -21,7 +21,11 @@ class PlayingService
   end
 
   def computer_choice
-    @computer_choice ||= Choice.find_by(id_name: curb_result)
+    @computer_choice ||= if curb_result[:success]
+                           Choice.find_by(id_name: curb_result[:choice])
+                         else
+                           Choice.order('RANDOM()').limit(1).first
+                         end
   end
 
   def curb_result
