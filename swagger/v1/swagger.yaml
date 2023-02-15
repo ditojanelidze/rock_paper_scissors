@@ -3,7 +3,34 @@ openapi: 3.0.1
 info:
   title: API V1
   version: v1
-paths: {}
+paths:
+  "/choices":
+    get:
+      summary: Get Available Choices
+      tags:
+      - Game
+      responses:
+        '200':
+          description: OK
+  "/play":
+    post:
+      summary: Play Game
+      tags:
+      - Game
+      parameters: []
+      responses:
+        '200':
+          description: ok
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                player_choice:
+                  type: string
+              required:
+              - player_choice
 servers:
 - url: http://{defaultHost}
   variables:
