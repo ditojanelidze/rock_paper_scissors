@@ -8,7 +8,7 @@ RSpec.describe External::CurbService do
 
   context 'when external api returns successful response' do
     before do
-      stub_request(:get, 'https://5eddt4q9dk.execute-api.us-east-1.amazonaws.com/rps-stage/throw').to_return(
+      stub_request(:get, External::CurbService.url).to_return(
         body: '{"statusCode": 200,"body": "rock"}', status: 200
       )
     end
@@ -21,7 +21,7 @@ RSpec.describe External::CurbService do
 
   context 'when external api returns error' do
     before do
-      stub_request(:get, 'https://5eddt4q9dk.execute-api.us-east-1.amazonaws.com/rps-stage/throw').to_return(
+      stub_request(:get, External::CurbService.url).to_return(
         body: '{"statusCode": 500,"body": "Error"}', status: 500
       )
     end
@@ -34,7 +34,7 @@ RSpec.describe External::CurbService do
 
   context 'when external api goes on timeout' do
     before do
-      stub_request(:get, 'https://5eddt4q9dk.execute-api.us-east-1.amazonaws.com/rps-stage/throw').to_timeout
+      stub_request(:get, External::CurbService.url).to_timeout
     end
 
     it 'returns error due to timeout' do

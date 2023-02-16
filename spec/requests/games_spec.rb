@@ -1,7 +1,8 @@
+# frozen_string_literal: true
+
 require 'swagger_helper'
 
 RSpec.describe 'employee', type: :request do
-
   path '/choices' do
     get 'Get Available Choices' do
       tags 'Game'
@@ -21,7 +22,7 @@ RSpec.describe 'employee', type: :request do
       parameter name: :params, in: :body, schema: {
         type: :object,
         properties: {
-          player_choice: {type: :string}
+          player_choice: { type: :string }
         },
         required: [:player_choice]
       }
