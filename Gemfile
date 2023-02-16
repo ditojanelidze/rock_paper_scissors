@@ -9,13 +9,17 @@ gem 'annotate'
 gem 'pg', '~> 1.1'
 gem 'puma', '~> 5.0'
 gem 'rack-cors'
+gem 'rest-client'
 gem 'rswag'
 
 group :development, :test do
+  gem 'factory_bot_rails'
+  gem 'faker'
   gem 'dotenv-rails'
   gem 'rubocop-rails'
 end
 
 group :test do
   gem 'rspec-rails'
+  gem 'webmock'
 end

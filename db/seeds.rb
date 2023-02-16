@@ -1,7 +1,17 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
-#   Character.create(name: "Luke", movie: movies.first)
+rock    = Choice.find_or_create_by(id_name: :rock)
+paper   = Choice.find_or_create_by(id_name: :paper)
+scissor = Choice.find_or_create_by(id_name: :scissor)
+
+GameRule.find_or_create_by(player_choice: rock, computer_choice: paper, result: :lose)
+GameRule.find_or_create_by(player_choice: rock, computer_choice: scissor, result: :win)
+
+GameRule.find_or_create_by(player_choice: paper, computer_choice: scissor, result: :lose)
+GameRule.find_or_create_by(player_choice: paper, computer_choice: rock, result: :win)
+
+GameRule.find_or_create_by(player_choice: scissor, computer_choice: paper, result: :win)
+GameRule.find_or_create_by(player_choice: scissor, computer_choice: rock, result: :lose)
+
+# Ties
+GameRule.find_or_create_by(player_choice: rock, computer_choice: rock, result: :tie)
+GameRule.find_or_create_by(player_choice: scissor, computer_choice: scissor, result: :tie)
+GameRule.find_or_create_by(player_choice: paper, computer_choice: paper, result: :tie)
